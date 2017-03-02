@@ -1,0 +1,291 @@
+%\documentclass[12pt, letterpaper]{article}
+\documentclass[12pt, letterpaper]{amsart}
+
+%%%%%%%%%%%% LANGUAGE & ENCODING %%%%%%%%%%%%%%%%%
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}%%%% to process umlauts and accents directly
+%\usepackage{indentfirst}
+%\usepackage{ucs}
+
+%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For Hyperlinks
+\usepackage[colorlinks,linkcolor=cyan,citecolor=magenta]{hyperref}
+
+% Common math packages
+\usepackage{amsthm, amsmath, amsfonts, amssymb, esint, mathrsfs, mathtools}
+\usepackage{tensor} % To handle multi-index notation
+\usepackage[capitalize,nameinlink]{cleveref} % Nice references
+\crefname{equation}{}{} % Removes Eq. from equation references
+\numberwithin{equation}{section} % Number equations within each section separately
+
+% Extra symbols
+\usepackage{stmaryrd} % contains \owedge  for Kulkarni-Nomizu product and some other special characters
+\usepackage{commath} % contains \norm \abs
+
+% Some useful packages
+\usepackage{verbatim} %%% enables \begin{comment}    \end{comment}
+\usepackage{enumerate} % allows different types of indices
+\usepackage{float} % Handling figures
+
+%%%%%%%%%%% MARGINS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Margins
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+%%%%%%%%%%% CUSTOM NOTATION  %%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+
+\newcommand{\E}{\mathbb{E}}
+%\newcommand{\P}{\mathbb{P}}
+
+\newcommand{\f}{\mathfrak}
+\newcommand{\ul}{\underline}
+\newcommand{\mb}{\mathbb}
+\newcommand{\mr}{\mathrm}
+\newcommand{\mf}{\mathbf}
+\newcommand{\mc}{\mathcal}
+\newcommand{\e}{\emph}
+\newcommand{\vp}{\varphi}
+\newcommand{\ve}{\varepsilon}
+
+\newcommand{\vol}{\operatorname{Vol}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\dv}{\operatorname{div}}
+\newcommand{\tr}{\operatorname{tr}}
+
+\newcommand{\dd}{\; \mathrm{d}} %%%% d for integration dx
+\newcommand{\wt}{\widetilde}
+\newcommand{\ol}{\overline}
+
+%%%%%%%%%%% TO INCLUDE CODE IN THE DOCUMENT %%%%%%%%%%%%
+\usepackage{listings}
+
+\lstset{
+  language=Python,
+  showstringspaces=false,
+  formfeed=newpage,
+  tabsize=4,
+  morekeywords={models, lambda, forms}
+}
+
+%%%%%%%%%%% THEOREMS %%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{problem}{Problem}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{solution}{Solution}
+
+%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%
+%\title[CIS625: Computational Learning Theory]{Computational Learning Theory Lecture Notes}
+%\author[Notes by Martin Citoler-Saumell]{Martin Citoler-Saumell}
+%\date{Spring 2017}
+%\address{University of Pennsylvania\\ Philadelphia, PA 19104}
+%\email{\href{mailto:martinci@math.upenn.edu}{martinci@math.upenn.edu}}
+
+\title{Research Division - Example Interview Questions 2016}
+\author{Solutions by Martin Citoler}
+\date{\today}
+
+%%%%%%%%%%% DOCUMENT BEGINS %%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+Coin toss
+\begin{enumerate}[a.]
+\item If you toss a coin until you see two heads in a row, how many tosses are required on average?
+\begin{solution}
+We assume that the coin might be unfair and shows a head with probability $p$. 
+Let $X = \textrm{\# tosses to see  head-head}$. We find the expected value of $X$ by conditioning on the outcome of the first toss 
+\begin{align*}
+\E [X] &= p \E[X|head] + (1-p)\E[X|tail]\\
+    &= p \left(p\E[X|head,head] + (1-p)\E[X|head,tail]\right) + (1-p)\left(1 + \E[X]\right)\\
+    &= p \left(p2 + (1-p)\left(2 + \E[X]\right)\right) + (1-p)\left(1 + \E[X]\right).
+\end{align*}
+Now we only need to solve for $\E[X]$. A straightforward computation yields
+\begin{align*}
+ \E[X] = \frac{1+p}{p^2},
+\end{align*}
+which means that we expect 6 tosses with a fair coin.
+\end{solution}
+\item If you toss a coin until you see a head followed by a tail, how many tosses are required on average?
+\begin{solution}
+We can solve this case in a similar fashion. Consider $X = \textrm{\# tosses to see  head-tail}$, we have
+\begin{align*}
+\E [X] &= p \E[X|head] + (1-p)\E[X|tail]\\
+    &= p\E[X|head] + (1-p)\left(1 + \E[X]\right),
+\end{align*}
+now observe that once we have tossed a head, the experiment reduces to tossing a coin until we see a tail. In other words, $\E[X|head] = 1 + \E[Y]$, where $Y = \textrm{\# tosses to see a tail}$. We can compute this as follows
+\begin{align*}
+\E[Y] = p\E[Y|head] + (1-p)\E[Y|tail] = p(1+\E[Y]) + (1-p),
+\end{align*}
+which results in $\E[Y]=\frac1{1-p}$. Plugging this in the original equation we obtain
+\begin{align*}
+ \E[X] = \frac1{p(1-p)},
+\end{align*}
+which gives 4 tosses for a fair coin.
+\end{solution}
+\item Why are these answers different, given that head-tail and head-head have an equal chance of appearing after two coin tosses?
+\begin{solution}
+The key fact is that we are not tossing the coins in blocks of two but we are doing it sequentially. Consider that we have just seen the first head. In case a., if we toss another head we are done and, similarly, in case b. if we toss a tail we are done. However, if we toss the undesired result, in case a. we need to ``start over'' because the head-head chain has been broken. In contrast, in case b. the sequence head-head only needs a tail afterwards. 
+\end{solution}
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+You want to create an open box with a square base and have only a fixed amount of material. How do you maximize the volume of the box, given the constraint on the total surface?
+\end{problem}
+
+
+\begin{problem}
+Given that $A$ and $B$ are covariance matrices, which of these are also covariance matrices?
+\begin{enumerate}[a.]
+\item $A$ + $B$
+\item $A^2$
+\item $AB$
+\end{enumerate}
+\end{problem}
+\begin{solution}
+content...
+\end{solution}
+
+
+\begin{problem}
+Consider a circle and an equilateral triangle inscribed inside the circle. Write some code to compute the following by simulation:
+\begin{enumerate}[a.]
+\item Take two points randomly on the circumference of the circle. Connect and measure the length of the chord through the two points. What is the probability that the chord is longer than the side of the triangle?
+\item Take  a random  point  inside  a  circle.  This  is  the  midpoint  of  only  one  chord.  What  is  the probability that this chord is longer than the side of the triangle?
+\item Take two points randomly inside a circle. Consider the chord that goes through the two points. What is the probability that the chord is longer than the side the triangle?
+\end{enumerate}
+\end{problem}
+\begin{solution}
+Note that the radius of the circle does not matter in any of the situations above, therefore, we can safely assume that it is equal to 1. We will write the answers using Python.
+\begin{enumerate}[a.]
+\item The length of a chord is uniquely determined by the angle that the endpoints form with the center of the circle. For example, it is easy to see that the side of an inscribed equilateral triangle is determined by $\frac{2\pi}3$. Further, choosing a random point on the circumference of the circle is equivalent to drawing a sample from a uniform distribution from 0 to $2\pi$. Thus, the problem can be solved using the following code:
+\begin{lstlisting}
+import numpy as np
+
+TWO_PI = 2*np.pi
+N = 100000
+angle_equilateral = TWO_PI/3
+success_count = 0
+for _ in range(N):
+    point1 = TWO_PI*np.random.rand()
+    point2 = TWO_PI*np.random.rand()
+    angle = min([abs(point1-point2), TWO_PI -abs(point1-point2)])
+    if angle > angle_equilateral:
+        success_count += 1
+print(success_count/N)
+\end{lstlisting}
+This results in a probability of $\frac13$.
+\item In this case, the length of the chord is uniquely determined by the distance of the point to the center of the circle. Thus, the problem reduces to comparing the radius of a random point inside the circle and the corresponding one on the equilateral triangle, which is $\frac12$. To sample a point uniformly on the inside of the circle, we can sample a point $(x, y)$ where $x$, $y$ are drawn from a uniform distribution from 0 to 1 and discard the point if it does not lie on the circle. Alternatively, since the area of a circle of radius $R$ grows like $R^2$, to sample a radius from a uniform distribution we can sample a uniform distribution from 0 to 1 and then take the square root (up to some constant).
+\begin{lstlisting}
+import numpy as np
+
+def getPoint():
+    x = np.rand()
+    y = np.rand()
+    while x**2 + y**2 > 1:
+        x = np.random.rand()
+        y = np.random.rand()
+   return [x,y]
+
+N = 100000
+radius_equilateral = 0.5
+success_count = 0
+for _ in range(N):
+    point = getPoint()
+    radius = (point[0]**2 + point[1]**2)**0.5
+    if radius > radius_equilateral:
+        success_count += 1
+print(success_count/N)
+\end{lstlisting}
+This gives a probability of $\frac 34$.
+\item We can draw points uniformly from the inside of the circle as above, compute the length of the chord determined by them and compare it to the side of the triangle, which is $\sqrt{3}$.
+\begin{lstlisting}
+import numpy as np
+
+def getPoint():
+    x = np.rand()
+    y = np.rand()
+    while x**2 + y**2 > 1:
+        x = np.random.rand()
+        y = np.random.rand()
+   return [x,y]
+
+def getLengthChord(point1, point2):
+    # get the line generated by the points: line(t) = v*t + point1
+    v1, v2 = point1[0]-point2[0], point1[1]-point2[1]
+    def line(t):
+        v = np.array([v1, v2])
+        p = np.array(point1)
+        return t*v + p
+    # get intercepts with the circle
+    a = (v1**2 + v2**2)
+    b = (2*v1*point1[0] + 2*v2*point1[1])
+    c = point1[0]**2 + point1[1]**2 -1
+    t1 = (-b + (b**2 - 4*a*c)**0.5)/(2*a)
+    t2 = (-b - (b**2 - 4*a*c)**0.5)/(2*a)
+    x = line(t1)
+    y = line(t2)
+    return np.linalg.norm(x-y)
+
+N = 100000
+side_equilateral = 3**0.5
+success_count = 0
+for _ in range(N):
+    point1 = getPoint()
+    point2 = getPoint()
+    len_chord = getLengthChord(point1, point2)
+    if len_chord > side_equilateral:
+        success_count += 1
+print(success_count/N)
+\end{lstlisting}
+\end{enumerate}
+\end{solution}
+
+
+\begin{problem}
+Given two words, the \emph{edit distance} between them is defined as the number of operations needed on the first word to convert into the other, where the allowed operations are insertion, removal and replacing of letters. How do you write a function that computes this distance between two words?
+\end{problem}
+\begin{solution}
+content...
+\end{solution}
+
+\begin{problem}
+A dynamic model is defined as follows:
+\begin{itemize}
+\item $State(n,m,t)$ is the state of the node $(n,m)$ at time $t$. This value is either 0 or 1.
+\item A neighborhood of node $(n,m)$ consist of 8 nodes around it. Denote $LifeAround(n,m,t)$ as the number of nodes in the neighborhood of $(n,m)$ at time $t$ that are in state 1.
+\item Evolution:
+    \begin{itemize}
+    \item If $State(n,m,t)=0$ (dead), then $State(n,m,t+1)=1$ (alive) if and only if $LifeAround(n,m,t)=3$.
+    \item If $State(n,m,t)=1$ (alive), then $State(n,m,t+1)=0$ (dead) if and only if $LifeAround(n,m,t)<2$ or $LifeAround(n,m,t)>3$.
+    \end{itemize}
+\end{itemize}
+\begin{enumerate}[a.]
+\item Write a function that starts with a given state and develops the model through n steps on a fixed grid with zeros outside the boundary.
+\item Write a similar function that has no boundary.
+\end{enumerate}
+\end{problem}
+
+\end{document}
