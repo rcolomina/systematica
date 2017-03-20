@@ -43,7 +43,7 @@ def testTossInRow(s, p='random', m=10, N=10**5):
             totalSum += tossInRow(p, s)
         simulated = totalSum/count
         theoretical = {"HH": (1 + p)/(p**2), "HT": 1/(p*(1-p))}
-        print("p = {:6f}\tSim = {:6f}\tThe = {:6f}".format(p,simulated, theoretical[s]))
+        print("p = {:6f}\tSimulated = {:6f}\tTheoretical = {:6f}".format(p,simulated, theoretical[s]))
 
         
 if __name__ == "__main__":

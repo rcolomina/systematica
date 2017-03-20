@@ -67,7 +67,7 @@ def simulationC(N):
     return success_count/N
 
 if __name__ == "__main__":
-    N = 10**5
+    N = 10**6
     
     # problem 4 a.
     print(simulationA(N))
