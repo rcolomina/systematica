@@ -1,2 +1,4 @@
 ./output/*
 sample-questions.pdf
+.gitignore
+

@@ -154,6 +154,9 @@ The key fact is that we are not tossing the coins in blocks of two but we are do
 \begin{problem}
 You want to create an open box with a square base and have only a fixed amount of material. How do you maximize the volume of the box, given the constraint on the total surface?
 \end{problem}
+\begin{solution}
+One can use the isoperimetric inequality to conclude that the optimal shape is a sphere.
+\end{solution}
 
 
 \begin{problem}
@@ -165,7 +168,19 @@ Given that $A$ and $B$ are covariance matrices, which of these are also covarian
 \end{enumerate}
 \end{problem}
 \begin{solution}
-content...
+A matrix $M$ is a covariance matrix if it satisfies $M^T=M$ and it is positive semi-definite, which means that $\langle v, Mv\rangle \geq 0$ for any vector $v$. First we look into the symmetry condition, we have that 
+\begin{align*}
+(A+B)^T &= A^T + B^T =  A + B,\\
+(A^2)^T &= (A^T)^2 = A^2,\\
+(AB)^T &= B^T A^T = BA,
+\end{align*}
+so we can conclude that $AB$ need not be a covariance matrix. Now let $v$ be any vector, we can verify that both $A + B$ and $A^2$ are positive semi-definite. Indeed,
+\begin{align*}
+\langle v, (A + B)v\rangle = \langle v, Av\rangle + \langle v, Bv\rangle \geq 0,\\
+\langle v, A^2v\rangle = \langle v, A(Av)\rangle = \langle A^Tv, Av\rangle = \norm{Av}^2 \geq 0.
+\end{align*}
+Thus, $A+B$ is a covariance matrix and so is $A^2$.
+
 \end{solution}
 
 

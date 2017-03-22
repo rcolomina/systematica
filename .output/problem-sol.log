@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.28)  20 MAR 2017 16:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.28)  22 MAR 2017 00:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -862,62 +862,61 @@ Overfull \hbox (11.24278pt too wide) in paragraph at lines 131--132
 i-lar fash-ion. Con-sider $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = []$,
  []
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 187.
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 202.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 187.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 202.
 
-Overfull \hbox (2.63298pt too wide) in paragraph at lines 194--195
+Overfull \hbox (2.63298pt too wide) in paragraph at lines 209--210
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 195.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 210.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 195.
- [2] [3]
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 210.
+ [3]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 236.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 251.
 
-Overfull \hbox (9.68297pt too wide) in paragraph at lines 236--237
+Overfull \hbox (9.68297pt too wide) in paragraph at lines 251--252
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (11.51996pt too wide) in paragraph at lines 279--280
+[4]
+Overfull \hbox (11.51996pt too wide) in paragraph at lines 294--295
 []\OT1/cmr/m/it/12 A neigh-bor-hood of node $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
 n; m\OT1/cmr/m/n/12 )$ \OT1/cmr/m/it/12 con-sist of 8 nodes around it. De-note 
 $\OML/cmm/m/it/12 LifeAround\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n; m; t\OT1/cmr/m
 /n/12 )$
  []
 
-[4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 292.
- [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 292.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 307.
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 307.
  (.output/problem-sol.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 292.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 292.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 307.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 307.
 Package rerunfilecheck Info: File `problem-sol.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 292.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 307.
  ) 
 Here is how much of TeX's memory you used:
  12024 strings out of 494850
  178169 string characters out of 6178024
- 295282 words of memory out of 5000000
+ 299282 words of memory out of 5000000
  14897 multiletter control sequences out of 15000+600000
  13898 words of font info for 62 fonts, out of 8000000 for 9000
  223 hyphenation exceptions out of 8191
- 40i,10n,40p,753b,1986s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,10n,40p,753b,1553s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -931,7 +930,7 @@ cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 
-Output written on .output/problem-sol.pdf (5 pages, 157239 bytes).
+Output written on .output/problem-sol.pdf (5 pages, 159678 bytes).
 PDF statistics:
  194 PDF objects out of 1000 (max. 8388607)
  172 compressed objects within 2 object streams

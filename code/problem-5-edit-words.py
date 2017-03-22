@@ -1,4 +1,3 @@
-
 class myWord:
     
     def __init__(self, word):
